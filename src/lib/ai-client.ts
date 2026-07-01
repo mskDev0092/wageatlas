@@ -146,38 +146,45 @@ export function buildMarketContext(country: CountryData, city: CityData): string
     .map((c) => `- ${c.label}: ${formatLocal(c.priceLocal, country.currencySymbol)} / ${c.unit}`)
     .join('\n')
 
-  return `You are WageAtlas AI, a labor-economics analyst.
-Analyze the minimum-wage market below using clear, structured prose.
-Use concrete numbers from the data. If asked about facts not in the data,
-say so explicitly and suggest checking an authoritative source.
+  return `You are WageAtlas AI, a labor-economics analyst with live web research capability.
+
+⚠ DATA FRESHNESS NOTICE ⚠
+The market data below is a static snapshot and may be outdated (exchange rates, commodity prices, and even minimum-wage rates change over time). The "effective" date shows when the stored figure was enacted — not necessarily the current rate.
+
+YOUR TASK:
+1. Use the snapshot data below as a starting reference.
+2. If you have web search or browsing capability, use it to find and cite current numbers from authoritative sources: ILO, OECD, national labour ministry websites, Numbeo, World Bank.
+3. When you cite supplemental data, include the source (e.g., "OECD 2025", "U.S. DOL", "Numbeo Jan 2026").
+4. Flag any large discrepancy between the snapshot and current data you find.
+5. If you cannot verify current data, clearly state what is snapshot vs. verified.
 
 MARKET CONTEXT
 - Country: ${country.name} (${country.iso2.toUpperCase()})
-- Currency: ${country.currency} (1 USD = ${country.usdRate} ${country.currency})
+- Currency: ${country.currency} (Snapshot rate: 1 USD = ${country.usdRate} ${country.currency})
 - City: ${city.name}
 - Authority: ${country.authority}
-- Effective: ${country.effectiveDate}
+- Snapshot effective: ${country.effectiveDate}
 - Standard workweek: ${country.standardWorkweekHours} h
-- Source: ${country.source} / ${city.source}
+- Snapshot sources: ${country.source} / ${city.source}
 
-MINIMUM WAGE
+SNAPSHOT MINIMUM WAGE
 - Hourly (derived): ${formatLocal(wage.hourly, country.currencySymbol)} (${formatUsd(wage.hourlyUsd)})
 - Daily: ${formatLocal(wage.daily, country.currencySymbol)} (${formatUsd(wage.daily * country.usdRate)})
 - Monthly: ${formatLocal(wage.monthly, country.currencySymbol)} (${formatUsd(wage.monthlyUsd)})
 - Annual: ${formatLocal(wage.annual, country.currencySymbol)} (${formatUsd(wage.annualUsd)})
 - Original legislated unit: ${wage.originalUnit}
 
-COST-OF-LIVING INDEXES (NYC = 100)
+SNAPSHOT COST-OF-LIVING INDEXES (NYC = 100)
 - Overall: ${city.costOfLivingIndex}
 - Rent: ${city.rentIndex}
 - Groceries: ${city.groceriesIndex}
 - Restaurant: ${city.restaurantIndex}
 - Local purchasing power: ${city.purchasingPowerIndex}
 
-COMMODITY BASKET (local currency per unit)
+SNAPSHOT COMMODITY BASKET (local currency per unit)
 ${commodities}
 
-CONSUMPTION PROFILES (monthly, local currency)
+SNAPSHOT CONSUMPTION PROFILES (monthly, local currency)
 ${city.consumption
   .map(
     (p) =>
@@ -187,8 +194,9 @@ ${city.consumption
   )
   .join('\n')}
 
-Answer in markdown. Be concise but substantive (3-6 short paragraphs).
-Prefer plain language a non-economist can act on.`
+Answer in markdown. Be concise (3-6 paragraphs). Use plain language.
+When citing data you supplemented via web search, clearly label it with "Web research" or the source name.
+If no web search is available, state that figures come from the embedded snapshot and note the effective date.`
 }
 
 /** Generate a single user-message turn for a market analysis. */

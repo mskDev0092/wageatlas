@@ -3,6 +3,11 @@ import type { CountryData } from './types'
 /**
  * Real-world minimum wage and cost-of-living dataset.
  *
+ * ⚠ STALENESS NOTICE ⚠
+ * This data is a static snapshot and may be outdated. Minimum wage rates,
+ * exchange rates, and cost-of-living indexes change over time. Verify
+ * current figures against official sources before making decisions.
+ *
  * Sources (publicly verifiable):
  *  - ILOSTAT / OECD Stat minimum wage databases
  *  - Numbeo Cost of Living Index (NYC = 100 baseline)

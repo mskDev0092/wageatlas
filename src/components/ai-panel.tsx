@@ -5,6 +5,7 @@ import {
   AlertCircle,
   BookOpen,
   Brain,
+  Globe,
   Loader2,
   Send,
   Sparkles,
@@ -34,9 +35,11 @@ interface AIPanelProps {
 }
 
 const QUICK_PROMPTS = [
+  'Search the web for the current minimum wage rate — is the snapshot data still accurate?',
   'What does a typical month look like for a minimum-wage worker here?',
   'Where does the wage fall short of basic needs?',
-  'How does this compare to other markets you know about?',
+  'Use web search to find and cite the latest exchange rate and recalculate wages in USD.',
+  'How does this compare to other markets? What has changed since this snapshot?',
   'What is the historical context of minimum wage in this country?',
 ]
 
@@ -197,7 +200,15 @@ export function AIPanel({ country, city, settings, onSettingsChange }: AIPanelPr
           </Button>
           <Button onClick={runResearch} disabled={wikiBusy} variant="outline" size="sm">
             {wikiBusy ? <Loader2 className="h-4 w-4 animate-spin" /> : <BookOpen className="h-4 w-4" />}
-            Wikipedia research
+            Wikipedia
+          </Button>
+          <Button
+            onClick={() => sendChat('Search the web for the latest minimum wage rate and cost-of-living data for this market. Compare with the snapshot data and report any changes. Cite your sources.')}
+            variant="outline"
+            size="sm"
+          >
+            <Globe className="h-4 w-4" />
+            Verify live
           </Button>
           <Button
             onClick={() => {
