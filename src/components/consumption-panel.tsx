@@ -130,7 +130,41 @@ export function ConsumptionPanel({ country, city }: ConsumptionPanelProps) {
           })}
         </div>
 
-        <p className="mt-4 text-xs text-muted-foreground">
+        {/* Prominent Net Salary Summary Area */}
+        <div className="mt-6 rounded-xl border border-border/60 bg-muted/10 p-5 shadow-sm">
+          <h4 className="mb-4 text-sm font-bold uppercase tracking-wide text-foreground/80 flex items-center gap-2">
+            <PieChartIcon className="h-4 w-4" />
+            Net Salary Projection (After Basic Costs)
+          </h4>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {city.consumption.map((profile) => {
+              const totalExpense = profile.expenses.reduce((sum, e) => sum + e.amountLocal, 0)
+              const surplus = profile.monthlyIncomeLocal - totalExpense
+              const isPositive = surplus >= 0
+              
+              return (
+                <div key={`${profile.type}-summary`} className="flex flex-col justify-between rounded-lg border bg-background p-3 shadow-sm">
+                  <span className="text-xs font-semibold text-muted-foreground mb-1">{profile.type} Net Income</span>
+                  <div className="flex items-end justify-between">
+                    <div>
+                      <div className={`text-xl font-bold stat-number ${isPositive ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-600 dark:text-rose-400'}`}>
+                        {isPositive ? '+' : ''}{formatLocal(surplus, country.currencySymbol)}
+                      </div>
+                      <div className="text-[10px] text-muted-foreground mt-0.5">
+                        {formatUsd(surplus / country.usdRate)} / month
+                      </div>
+                    </div>
+                    <div className={`text-xs font-medium px-2 py-0.5 rounded-full ${isPositive ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-950 dark:text-emerald-300' : 'bg-rose-100 text-rose-800 dark:bg-rose-950 dark:text-rose-300'}`}>
+                      {isPositive ? 'Surplus' : 'Deficit'}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        <p className="mt-5 text-[11px] leading-relaxed text-muted-foreground">
           Negative surplus indicates the household cannot meet basic expenses on a single
           minimum-wage income — typical for families in markets where the wage is set per
           worker rather than per household.

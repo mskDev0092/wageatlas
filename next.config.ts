@@ -7,10 +7,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   /* config options here */
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  reactStrictMode: false,
+  reactStrictMode: true,
 };
 
 export default nextConfig;

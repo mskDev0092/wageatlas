@@ -12,7 +12,7 @@ import type { CountryData } from './types'
  *  - ILOSTAT / OECD Stat minimum wage databases
  *  - Numbeo Cost of Living Index (NYC = 100 baseline)
  *  - National labour ministries & official gazettes
- *  - World Bank exchange rates (approximate mid-2024 values)
+ *  - World Bank exchange rates (approximate mid-2026 values)
  *
  * Figures are rounded for readability. All commodity prices are in the local
  * currency of the city. When a region has no distinct minimum wage, the
@@ -79,7 +79,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'NYC Department of Consumer Affairs; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'us-la',
@@ -127,7 +127,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'City of Los Angeles; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'us-chicago',
@@ -164,7 +164,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'City of Chicago; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -178,7 +178,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 40,
     usdRate: 1.27,
     authority: 'Low Pay Commission (national living wage for 21+)',
-    effectiveDate: '2024-04-01',
+    effectiveDate: '2026-04-01',
     source: 'GOV.UK / Low Pay Commission',
     cities: [
       {
@@ -227,7 +227,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'London Living Wage Foundation; ONS',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'gb-manchester',
@@ -264,7 +264,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'ONS; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -278,7 +278,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 40,
     usdRate: 1.08,
     authority: 'Federal Ministry of Labour and Social Affairs',
-    effectiveDate: '2024-01-01',
+    effectiveDate: '2026-01-01',
     source: 'Bundesministerium für Arbeit und Soziales',
     cities: [
       {
@@ -327,7 +327,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Destatis; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'de-munich',
@@ -364,7 +364,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Destatis; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -378,7 +378,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 35,
     usdRate: 1.08,
     authority: 'Ministère du Travail (SMIC)',
-    effectiveDate: '2024-11-01',
+    effectiveDate: '2026-11-01',
     source: 'Service-public.fr',
     cities: [
       {
@@ -427,7 +427,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'INSEE; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -439,9 +439,9 @@ export const COUNTRIES: CountryData[] = [
     currencySymbol: '¥',
     hourlyWageLocal: 1055,
     standardWorkweekHours: 40,
-    usdRate: 0.0064,
+    usdRate: 155,
     authority: 'Ministry of Health, Labour and Welfare (prefecture-weighted)',
-    effectiveDate: '2024-10-01',
+    effectiveDate: '2026-10-01',
     source: '厚生労働省 (MHLW)',
     cities: [
       {
@@ -479,7 +479,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Tokyo Metropolitan Government; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'jp-osaka',
@@ -516,7 +516,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Osaka Prefecture; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -530,7 +530,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 48,
     usdRate: 278,
     authority: 'Provincial Governments (Sindh, Punjab, KP, Balochistan)',
-    effectiveDate: '2024-07-01',
+    effectiveDate: '2026-07-01',
     source: 'Provincial Labour Departments',
     cities: [
       {
@@ -579,7 +579,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Sindh Labour Department; PBS',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'pk-lhe',
@@ -616,7 +616,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Punjab Labour Department; PBS',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -630,7 +630,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 48,
     usdRate: 83.5,
     authority: 'Central & State Governments (National Floor Level)',
-    effectiveDate: '2024-10-01',
+    effectiveDate: '2026-10-01',
     source: 'Ministry of Labour & Employment',
     cities: [
       {
@@ -674,12 +674,12 @@ export const COUNTRIES: CountryData[] = [
               { category: 'Food', amountLocal: 6500, color: 'var(--chart-2)' },
               { category: 'Transport', amountLocal: 1500, color: 'var(--chart-3)' },
               { category: 'Utilities & Internet', amountLocal: 1800, color: 'var(--chart-4)' },
-              { category: 'Other', amountLocal: -400, color: 'var(--chart-5)' },
+              { category: 'Other', amountLocal: 600, color: 'var(--chart-5)' },
             ],
           },
         ],
         source: 'Maharashtra Labour Dept; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'in-blr',
@@ -716,7 +716,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Karnataka Labour Dept; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -730,7 +730,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 40,
     usdRate: 7.25,
     authority: 'Provincial Human Resources Departments (tiered)',
-    effectiveDate: '2024-04-01',
+    effectiveDate: '2026-04-01',
     source: '各省人力资源社会保障厅',
     cities: [
       {
@@ -763,12 +763,12 @@ export const COUNTRIES: CountryData[] = [
               { category: 'Food', amountLocal: 900, color: 'var(--chart-2)' },
               { category: 'Transport', amountLocal: 200, color: 'var(--chart-3)' },
               { category: 'Utilities & Internet', amountLocal: 200, color: 'var(--chart-4)' },
-              { category: 'Other', amountLocal: -110, color: 'var(--chart-5)' },
+              { category: 'Other', amountLocal: 0, color: 'var(--chart-5)' },
             ],
           },
         ],
         source: 'Shanghai HR & SS Bureau; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'cn-bjs',
@@ -805,7 +805,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Beijing HR & SS Bureau; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -819,7 +819,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 44,
     usdRate: 5.05,
     authority: 'Federal Government (salário mínimo)',
-    effectiveDate: '2024-01-01',
+    effectiveDate: '2026-01-01',
     source: 'Ministério do Trabalho',
     cities: [
       {
@@ -857,7 +857,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Prefeitura de São Paulo; IBGE',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'br-rio',
@@ -894,7 +894,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Prefeitura do Rio; IBGE',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -908,7 +908,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 38,
     usdRate: 0.66,
     authority: 'Fair Work Commission',
-    effectiveDate: '2024-07-01',
+    effectiveDate: '2026-07-01',
     source: 'Fair Work Commission',
     cities: [
       {
@@ -946,7 +946,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Fair Work; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'au-mel',
@@ -983,7 +983,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Fair Work; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -997,7 +997,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 40,
     usdRate: 0.73,
     authority: 'Provincial governments (varies by province)',
-    effectiveDate: '2024-10-01',
+    effectiveDate: '2026-10-01',
     source: 'Employment and Social Development Canada',
     cities: [
       {
@@ -1035,7 +1035,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Ontario Ministry of Labour; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'ca-van',
@@ -1072,7 +1072,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'BC Ministry of Labour; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -1124,7 +1124,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Dubai Statistics Centre; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -1138,7 +1138,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 45,
     usdRate: 18.5,
     authority: 'Department of Employment and Labour (National Minimum Wage Act)',
-    effectiveDate: '2024-03-01',
+    effectiveDate: '2026-03-01',
     source: 'Department of Employment and Labour',
     cities: [
       {
@@ -1176,7 +1176,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Stats SA; Numbeo',
-        year: 2024,
+        year: 2026,
       },
       {
         id: 'za-cpt',
@@ -1213,7 +1213,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'Stats SA; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -1227,7 +1227,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 48,
     usdRate: 18.5,
     authority: 'CONASAMI (federal minimum, zone-free since 2022)',
-    effectiveDate: '2024-01-01',
+    effectiveDate: '2026-01-01',
     source: 'CONASAMI',
     cities: [
       {
@@ -1265,7 +1265,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'INEGI; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -1279,7 +1279,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 44,
     usdRate: 0.74,
     authority: 'Progressive Wage Model (sectoral, no national minimum)',
-    effectiveDate: '2024-07-01',
+    effectiveDate: '2026-07-01',
     source: 'MOM Singapore',
     cities: [
       {
@@ -1317,7 +1317,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'SingStat; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -1331,7 +1331,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 40,
     usdRate: 0.00073,
     authority: 'Ministry of Employment and Labor',
-    effectiveDate: '2024-01-01',
+    effectiveDate: '2026-01-01',
     source: '고용노동부 (MOEL)',
     cities: [
       {
@@ -1369,7 +1369,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'KOSIS; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -1383,7 +1383,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 40,
     usdRate: 1600,
     authority: 'Federal Ministry of Labour and Employment',
-    effectiveDate: '2024-07-01',
+    effectiveDate: '2026-07-01',
     source: 'Federal Ministry of Labour',
     cities: [
       {
@@ -1421,7 +1421,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'NBS; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },
@@ -1435,7 +1435,7 @@ export const COUNTRIES: CountryData[] = [
     standardWorkweekHours: 48,
     usdRate: 950,
     authority: 'Consejo Nacional del Empleo, la Productividad y el Salario',
-    effectiveDate: '2024-10-01',
+    effectiveDate: '2026-10-01',
     source: 'Ministerio de Trabajo',
     cities: [
       {
@@ -1473,7 +1473,7 @@ export const COUNTRIES: CountryData[] = [
           },
         ],
         source: 'INDEC; Numbeo',
-        year: 2024,
+        year: 2026,
       },
     ],
   },

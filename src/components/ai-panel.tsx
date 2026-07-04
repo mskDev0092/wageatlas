@@ -35,10 +35,10 @@ interface AIPanelProps {
 }
 
 const QUICK_PROMPTS = [
-  'Search the web for the current minimum wage rate — is the snapshot data still accurate?',
-  'What does a typical month look like for a minimum-wage worker here?',
-  'Where does the wage fall short of basic needs?',
-  'Use web search to find and cite the latest exchange rate and recalculate wages in USD.',
+  'Search the web for the latest 2026 minimum wage rate — what are the current numbers?',
+  'What does a typical month look like for a minimum-wage worker here in 2026?',
+  'Where does the 2026 wage fall short of basic needs?',
+  'Use web search to find and cite the latest 2026 exchange rate and recalculate wages in USD.',
   'How does this compare to other markets? What has changed since this snapshot?',
   'What is the historical context of minimum wage in this country?',
 ]
@@ -203,12 +203,13 @@ export function AIPanel({ country, city, settings, onSettingsChange }: AIPanelPr
             Wikipedia
           </Button>
           <Button
-            onClick={() => sendChat('Search the web for the latest minimum wage rate and cost-of-living data for this market. Compare with the snapshot data and report any changes. Cite your sources.')}
-            variant="outline"
+            onClick={() => sendChat('Search the web for the latest 2026 minimum wage rate and cost-of-living data for this market. Compare with the provided snapshot data and report any changes. Provide a breakdown of current 2026 numbers and cite your sources.')}
+            variant="default"
+            className="bg-primary/90 hover:bg-primary"
             size="sm"
           >
-            <Globe className="h-4 w-4" />
-            Verify live
+            <Globe className="h-4 w-4 mr-1.5" />
+            Live 2026 AI Fetch
           </Button>
           <Button
             onClick={() => {

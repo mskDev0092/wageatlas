@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Building2, CalendarDays, Clock, Coins, Scale } from 'lucide-react'
+import { Building2, CalendarDays, Clock, Coins, Scale, TrendingUp, ArrowUpRight } from 'lucide-react'
 import { Card } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import type { CityData, CountryData } from '@/lib/types'
@@ -17,51 +17,60 @@ interface MarketHeroProps {
   city: CityData
 }
 
-/** Hero card: country flag, names, primary wage number, key metadata badges. */
 export function MarketHero({ country, city }: MarketHeroProps) {
   const wage = normalizeWage(city, country)
 
   const stats = [
     {
       icon: <Clock className="h-4 w-4" />,
-      label: 'Per hour',
+      label: 'Hourly',
       local: formatLocal(wage.hourly, country.currencySymbol, 2),
       usd: formatUsd(wage.hourlyUsd),
+      gradient: 'from-chart-1/10 to-transparent',
     },
     {
       icon: <CalendarDays className="h-4 w-4" />,
-      label: 'Per month',
+      label: 'Monthly',
       local: formatLocal(wage.monthly, country.currencySymbol),
       usd: formatUsd(wage.monthlyUsd),
+      gradient: 'from-chart-2/10 to-transparent',
     },
     {
       icon: <Coins className="h-4 w-4" />,
-      label: 'Per year',
+      label: 'Annual',
       local: formatLocal(wage.annual, country.currencySymbol),
       usd: formatUsd(wage.annualUsd),
+      gradient: 'from-chart-3/10 to-transparent',
     },
   ]
 
   return (
-    <Card className="print-card relative overflow-hidden border-0 bg-gradient-to-br from-card via-card to-muted/40 p-6 sm:p-8">
+    <Card className="glass-card print-card relative overflow-hidden border-0 p-0">
+      {/* Decorative flag watermark */}
       <div
-        className="pointer-events-none absolute -right-10 -top-10 text-[12rem] leading-none opacity-[0.08] select-none"
+        className="pointer-events-none absolute -right-6 -top-6 text-[11rem] leading-none opacity-[0.06] select-none blur-[1px]"
         aria-hidden
       >
         {flagEmoji(country.iso2)}
       </div>
 
-      <div className="relative z-10 flex flex-col gap-6">
+      {/* Subtle accent stripe at top */}
+      <div className="h-1 w-full bg-gradient-to-r from-chart-1 via-chart-2 to-chart-3 opacity-80" />
+
+      <div className="relative z-10 flex flex-col gap-6 p-6 sm:p-8">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="flex items-start gap-4">
-            <div
-              className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-background/80 text-4xl shadow-sm ring-1 ring-border"
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              className="grid h-16 w-16 shrink-0 place-items-center rounded-2xl bg-background/80 text-4xl shadow-md ring-1 ring-border/50"
               aria-hidden
             >
               {flagEmoji(country.iso2)}
-            </div>
+            </motion.div>
             <div className="min-w-0">
-              <p className="text-xs font-medium uppercase tracking-widest text-muted-foreground">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.15em] text-primary/80">
                 Minimum Wage Market
               </p>
               <h1 className="mt-1 text-3xl font-bold leading-tight tracking-tight sm:text-4xl">
@@ -70,17 +79,20 @@ export function MarketHero({ country, city }: MarketHeroProps) {
                   · {country.name}
                 </span>
               </h1>
-              <p className="mt-1 text-sm text-muted-foreground">
-                {country.currency} · 1 USD = {country.usdRate} {country.currency} ·{' '}
-                {country.standardWorkweekHours} h workweek
-              </p>
+              <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted-foreground">
+                <span className="font-medium">{country.currency}</span>
+                <span className="opacity-40">·</span>
+                <span className="stat-number">1 USD = {country.usdRate} {country.currency}</span>
+                <span className="opacity-40">·</span>
+                <span>{country.standardWorkweekHours}h workweek</span>
+              </div>
             </div>
           </div>
           <div className="flex flex-wrap gap-2 lg:flex-col lg:items-end lg:gap-1.5">
-            <Badge variant="secondary" className="gap-1.5 py-1">
+            <Badge variant="secondary" className="gap-1.5 py-1 text-[11px]">
               <Scale className="h-3 w-3" /> {wage.originalUnit} rate
             </Badge>
-            <Badge variant="secondary" className="gap-1.5 py-1">
+            <Badge variant="secondary" className="gap-1.5 py-1 text-[11px]">
               <CalendarDays className="h-3 w-3" /> Effective {country.effectiveDate}
             </Badge>
           </div>
@@ -94,18 +106,24 @@ export function MarketHero({ country, city }: MarketHeroProps) {
           transition={{ duration: 0.35, ease: 'easeOut' }}
           className="grid grid-cols-1 gap-3 sm:grid-cols-3"
         >
-          {stats.map((s) => (
-            <div
+          {stats.map((s, idx) => (
+            <motion.div
               key={s.label}
-              className="rounded-xl bg-background/60 p-4 ring-1 ring-border backdrop-blur-sm"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: idx * 0.08 }}
+              className={`glow-card rounded-xl bg-gradient-to-br ${s.gradient} bg-background/60 p-4 ring-1 ring-border/50 backdrop-blur-sm`}
             >
-              <div className="flex items-center gap-1.5 text-xs uppercase tracking-wide text-muted-foreground">
+              <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.12em] text-muted-foreground font-medium">
                 {s.icon}
                 {s.label}
               </div>
-              <div className="mt-2 text-2xl font-semibold tabular-nums">{s.local}</div>
-              <div className="text-sm text-muted-foreground tabular-nums">{s.usd}</div>
-            </div>
+              <div className="mt-2 text-2xl font-bold stat-number leading-none">{s.local}</div>
+              <div className="mt-1.5 flex items-center gap-1 text-sm text-muted-foreground stat-number">
+                <ArrowUpRight className="h-3 w-3 opacity-50" />
+                {s.usd}
+              </div>
+            </motion.div>
           ))}
         </motion.div>
 

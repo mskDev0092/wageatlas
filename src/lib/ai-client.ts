@@ -169,7 +169,7 @@ MARKET CONTEXT
 
 SNAPSHOT MINIMUM WAGE
 - Hourly (derived): ${formatLocal(wage.hourly, country.currencySymbol)} (${formatUsd(wage.hourlyUsd)})
-- Daily: ${formatLocal(wage.daily, country.currencySymbol)} (${formatUsd(wage.daily * country.usdRate)})
+- Daily: ${formatLocal(wage.daily, country.currencySymbol)} (${formatUsd(wage.daily / country.usdRate)})
 - Monthly: ${formatLocal(wage.monthly, country.currencySymbol)} (${formatUsd(wage.monthlyUsd)})
 - Annual: ${formatLocal(wage.annual, country.currencySymbol)} (${formatUsd(wage.annualUsd)})
 - Original legislated unit: ${wage.originalUnit}
