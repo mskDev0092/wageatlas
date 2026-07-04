@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useMemo, useState } from 'react'
-import { BarChart3, Github, Globe2, Sparkles, TrendingUp, Users, MapPin, ArrowDown } from 'lucide-react'
+import { BarChart3, Github, Globe2, Sparkles, Users, MapPin } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CountryCitySelector } from '@/components/country-city-selector'
 import { MarketHero } from '@/components/market-hero'
@@ -167,11 +167,30 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="ml-auto flex items-center gap-1.5 sm:gap-2">
+          <div className="ml-auto flex items-center gap-1 sm:gap-2">
+            <Button
+              variant="outline"
+              size="icon"
+              className="sm:hidden"
+              onClick={() => {
+                if (compareWith?.countryId === countryId && compareWith?.cityId === cityId) {
+                  setCompareWith(null)
+                  return
+                }
+                setCompareWith({ countryId, cityId })
+                toast({
+                  title: 'Marked for comparison',
+                  description: 'Now switch to another market to compare side-by-side.',
+                })
+              }}
+              title={compareWith ? 'Clear comparison' : 'Compare markets'}
+            >
+              <Sparkles className="h-4 w-4" />
+            </Button>
             <Button
               variant="outline"
               size="sm"
-              className="hidden gap-2 sm:inline-flex"
+              className="hidden sm:inline-flex gap-1.5"
               onClick={() => {
                 if (compareWith?.countryId === countryId && compareWith?.cityId === cityId) {
                   setCompareWith(null)

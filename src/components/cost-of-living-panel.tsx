@@ -53,55 +53,51 @@ export function CostOfLivingPanel({ city }: CostOfLivingPanelProps) {
         </div>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-4 lg:grid-cols-5">
-          {/* Radar on the left for compactness */}
-          <div className="lg:col-span-2">
-            <ResponsiveContainer width="100%" height={220}>
-              <RadarChart data={radarData} outerRadius="78%">
-                <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11 }} />
-                <Radar
-                  name={city.name}
-                  dataKey="value"
-                  stroke="var(--chart-2)"
-                  fill="var(--chart-2)"
-                  fillOpacity={0.4}
-                />
-              </RadarChart>
-            </ResponsiveContainer>
-          </div>
+        {/* Bars with NYC baseline reference */}
+        <ResponsiveContainer width="100%" height={200}>
+          <BarChart data={barData} layout="vertical" margin={{ left: 12, right: 12, top: 4, bottom: 4 }}>
+            <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--border)" />
+            <XAxis
+              type="number"
+              domain={[0, 120]}
+              tick={{ fontSize: 11 }}
+              stroke="var(--muted-foreground)"
+            />
+            <YAxis
+              type="category"
+              dataKey="name"
+              width={88}
+              tick={{ fontSize: 11 }}
+              stroke="var(--muted-foreground)"
+            />
+            <Tooltip
+              cursor={{ fill: 'var(--muted)', opacity: 0.4 }}
+              contentStyle={{
+                background: 'var(--popover)',
+                border: '1px solid var(--border)',
+                borderRadius: 8,
+                fontSize: 12,
+              }}
+              formatter={(value: number) => [`${value} (NYC=100)`, 'Index']}
+            />
+            <Bar dataKey="value" radius={[0, 4, 4, 0]} fill="var(--chart-1)" />
+          </BarChart>
+        </ResponsiveContainer>
 
-          {/* Bars with NYC baseline reference */}
-          <div className="lg:col-span-3">
-            <ResponsiveContainer width="100%" height={220}>
-              <BarChart data={barData} layout="vertical" margin={{ left: 12, right: 12, top: 4, bottom: 4 }}>
-                <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="var(--border)" />
-                <XAxis
-                  type="number"
-                  domain={[0, 120]}
-                  tick={{ fontSize: 11 }}
-                  stroke="var(--muted-foreground)"
-                />
-                <YAxis
-                  type="category"
-                  dataKey="name"
-                  width={88}
-                  tick={{ fontSize: 11 }}
-                  stroke="var(--muted-foreground)"
-                />
-                <Tooltip
-                  cursor={{ fill: 'var(--muted)', opacity: 0.4 }}
-                  contentStyle={{
-                    background: 'var(--popover)',
-                    border: '1px solid var(--border)',
-                    borderRadius: 8,
-                    fontSize: 12,
-                  }}
-                  formatter={(value: number) => [`${value} (NYC=100)`, 'Index']}
-                />
-                <Bar dataKey="value" radius={[0, 4, 4, 0]} fill="var(--chart-1)" />
-              </BarChart>
-            </ResponsiveContainer>
-          </div>
+        {/* Radar chart */}
+        <div className="mt-2">
+          <ResponsiveContainer width="100%" height={200}>
+            <RadarChart data={radarData} outerRadius="78%">
+              <PolarAngleAxis dataKey="subject" tick={{ fontSize: 11 }} />
+              <Radar
+                name={city.name}
+                dataKey="value"
+                stroke="var(--chart-2)"
+                fill="var(--chart-2)"
+                fillOpacity={0.4}
+              />
+            </RadarChart>
+          </ResponsiveContainer>
         </div>
 
         {/* Inline index chips for quick scanning / print */}
@@ -110,7 +106,7 @@ export function CostOfLivingPanel({ city }: CostOfLivingPanelProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-5"
+          className="mt-4 grid grid-cols-3 gap-2 sm:grid-cols-5"
         >
           {Object.entries(INDEX_LABELS).map(([key, label]) => {
             const value = city[key as keyof CityData] as number

@@ -56,12 +56,12 @@ export function CommodityBasket({ country, city }: CommodityBasketProps) {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[34%]">Item</TableHead>
-                <TableHead className="w-[14%]">Category</TableHead>
-                <TableHead className="text-right">Unit</TableHead>
-                <TableHead className="text-right">Price (local)</TableHead>
+                <TableHead>Item</TableHead>
+                <TableHead className="hidden sm:table-cell">Category</TableHead>
+                <TableHead className="hidden md:table-cell text-right">Unit</TableHead>
+                <TableHead className="text-right">Price</TableHead>
                 <TableHead className="text-right">USD</TableHead>
-                <TableHead className="text-right">Hours to earn</TableHead>
+                <TableHead className="text-right">Hours</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -78,16 +78,16 @@ export function CommodityBasket({ country, city }: CommodityBasketProps) {
                   >
                     <TableCell className="font-medium">
                       <div className="flex items-center gap-2">
-                        <span className="text-lg leading-none" aria-hidden>{c.icon}</span>
-                        <span>{c.label}</span>
+                        <span className="text-lg leading-none shrink-0" aria-hidden>{c.icon}</span>
+                        <span className="truncate">{c.label}</span>
                       </div>
                     </TableCell>
-                    <TableCell>
+                    <TableCell className="hidden sm:table-cell">
                       <Badge variant="secondary" className={CATEGORY_COLOR[c.category]}>
                         {c.category}
                       </Badge>
                     </TableCell>
-                    <TableCell className="text-right text-muted-foreground">{c.unit}</TableCell>
+                    <TableCell className="hidden md:table-cell text-right text-muted-foreground">{c.unit}</TableCell>
                     <TableCell className="text-right tabular-nums">
                       {formatLocal(c.priceLocal, country.currencySymbol)}
                     </TableCell>

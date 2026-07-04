@@ -1,6 +1,6 @@
 'use client'
 
-import { FileDown, FileText, MoreHorizontal } from 'lucide-react'
+import { Download, FileDown, FileText } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -41,7 +41,7 @@ export function ExportMenu({ country, city }: ExportMenuProps) {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm" className="gap-2">
-          <MoreHorizontal className="h-4 w-4" />
+          <Download className="h-4 w-4" />
           Export
         </Button>
       </DropdownMenuTrigger>

@@ -164,7 +164,7 @@ export function AIPanel({ country, city, settings, onSettingsChange }: AIPanelPr
   }
 
   return (
-    <Card className="print-card border-2 border-dashed">
+    <Card className="print-card border border-border/60">
       <CardHeader>
         <div className="flex flex-wrap items-center justify-between gap-2">
           <div className="flex items-center gap-2">
@@ -202,14 +202,13 @@ export function AIPanel({ country, city, settings, onSettingsChange }: AIPanelPr
             {wikiBusy ? <Loader2 className="h-4 w-4 animate-spin" /> : <BookOpen className="h-4 w-4" />}
             Wikipedia
           </Button>
-          <Button
-            onClick={() => sendChat('Search the web for the latest 2026 minimum wage rate and cost-of-living data for this market. Compare with the provided snapshot data and report any changes. Provide a breakdown of current 2026 numbers and cite your sources.')}
+            <Button
+            onClick={() => sendChat('Search the web for the latest minimum wage rate, exchange rates, and cost-of-living data for this market. Compare with the snapshot data and report changes. Cite your sources.')}
             variant="default"
-            className="bg-primary/90 hover:bg-primary"
             size="sm"
           >
-            <Globe className="h-4 w-4 mr-1.5" />
-            Live 2026 AI Fetch
+            <Globe className="h-4 w-4" />
+            Verify live
           </Button>
           <Button
             onClick={() => {
@@ -275,13 +274,13 @@ export function AIPanel({ country, city, settings, onSettingsChange }: AIPanelPr
         )}
 
         {/* Quick prompts */}
-        <div className="flex flex-wrap gap-1.5 no-print">
+        <div className="flex flex-wrap gap-2 no-print">
           {QUICK_PROMPTS.map((p) => (
             <Button
               key={p}
               variant="secondary"
               size="sm"
-              className="h-7 text-xs"
+              className="text-xs leading-tight"
               onClick={() => sendChat(p)}
               disabled={chatBusy}
             >

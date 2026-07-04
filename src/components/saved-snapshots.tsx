@@ -132,48 +132,47 @@ export function SavedSnapshotsDrawer({
                       exit={{ opacity: 0, x: -10 }}
                       className="group rounded-lg border bg-card p-3 transition hover:border-primary/40 hover:shadow-sm"
                     >
-                      <button
-                        className="w-full text-left"
-                        onClick={() => {
-                          onLoad(s)
-                          setOpen(false)
-                        }}
-                      >
-                        <div className="flex items-center gap-2">
-                          <span className="text-xl" aria-hidden>{flagEmoji(country.iso2)}</span>
-                          <div className="min-w-0 flex-1">
-                            <div className="truncate font-medium">
-                              {city.name}, {country.name}
-                            </div>
-                            <div className="text-xs text-muted-foreground">
-                              {formatLocal(wage.monthly, country.currencySymbol)} /mo ·{' '}
-                              {formatUsd(wage.monthlyUsd)}
+                      <div className="flex items-start gap-2">
+                        <button
+                          className="flex-1 min-w-0 text-left"
+                          onClick={() => {
+                            onLoad(s)
+                            setOpen(false)
+                          }}
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className="text-xl" aria-hidden>{flagEmoji(country.iso2)}</span>
+                            <div className="min-w-0 flex-1">
+                              <div className="truncate font-medium">
+                                {city.name}, {country.name}
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {formatLocal(wage.monthly, country.currencySymbol)} /mo ·{' '}
+                                {formatUsd(wage.monthlyUsd)}
+                              </div>
                             </div>
                           </div>
-                          <ArrowRight className="h-4 w-4 text-muted-foreground opacity-0 transition group-hover:opacity-100" />
-                        </div>
-                        {s.notes && (
-                          <p className="mt-1.5 text-xs italic text-muted-foreground">
-                            &ldquo;{s.notes}&rdquo;
+                          {s.notes && (
+                            <p className="mt-1.5 text-xs italic text-muted-foreground">
+                              &ldquo;{s.notes}&rdquo;
+                            </p>
+                          )}
+                          <p className="mt-1 text-[10px] uppercase tracking-wide text-muted-foreground">
+                            Saved {new Date(s.savedAt).toLocaleDateString(undefined, {
+                              month: 'short',
+                              day: 'numeric',
+                              year: 'numeric',
+                            })}
                           </p>
-                        )}
-                        <p className="mt-1 text-[10px] uppercase tracking-wide text-muted-foreground">
-                          Saved {new Date(s.savedAt).toLocaleDateString(undefined, {
-                            month: 'short',
-                            day: 'numeric',
-                            year: 'numeric',
-                          })}
-                        </p>
-                      </button>
-                      <div className="mt-2 flex justify-end">
+                        </button>
                         <Button
-                          size="sm"
+                          size="icon"
                           variant="ghost"
-                          className="h-7 text-xs text-muted-foreground hover:text-destructive"
+                          className="mt-0.5 h-7 w-7 shrink-0 text-muted-foreground hover:text-destructive"
                           onClick={() => onDelete(s.id)}
+                          title="Remove snapshot"
                         >
                           <Trash2 className="h-3.5 w-3.5" />
-                          Remove
                         </Button>
                       </div>
                     </motion.div>

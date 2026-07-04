@@ -153,7 +153,7 @@ The market data below is a static snapshot and may be outdated (exchange rates, 
 
 YOUR TASK:
 1. Use the snapshot data below as a starting reference.
-2. If you have web search or browsing capability, use it to find and cite current numbers from authoritative sources: ILO, OECD, national labour ministry websites, Numbeo, World Bank.
+2. If you have web search or browsing capability, use it to find and cite current numbers from authoritative sources: ILO, OECD, national labour ministry websites, Numbeo, World Bank, TradingEconomics.
 3. When you cite supplemental data, include the source (e.g., "OECD 2025", "U.S. DOL", "Numbeo Jan 2026").
 4. Flag any large discrepancy between the snapshot and current data you find.
 5. If you cannot verify current data, clearly state what is snapshot vs. verified.
